@@ -8,22 +8,12 @@ const JobList = () => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const result = await axios.get("/jobs");
+      const result = await axios.get("http://localhost:5000/api/jobs");
       setJobs(result.data);
       setFilteredJobs(result.data);
     };
     fetchJobs();
   }, []);
-
-  const fetchJobs = async () => {
-    try {
-      const result = await axios.get("http://localhost:5000/api/jobs"); // Adjust the URL if necessary
-      setJobs(result.data);
-      setFilteredJobs(result.data);
-    } catch (error) {
-      console.error('Error fetching jobs:', error);
-    }
-  };
   
 
   const handleFilterChange = (e) => {
